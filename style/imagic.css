@@ -1,9 +1,24 @@
 @charset "utf-8";
 
 #__cover_bg{width:100%;height: 100%;_position:absolute;position: fixed;left: 0;top: 0;z-index: 10;background-color: #000;opacity: 0.4;filter:alpha(opacity=40);}
-.albums{z-index:11;width:1000px;background:white;position:absolute;left:50%;margin-left:-500px;}
+.albums{z-index:11;width:1000px;background:transparent;position:absolute;left:50%;margin-left:-500px;}
 .albums .close{cursor:pointer;width:26px;height:26px;background-image:url(../images/icons.png);background-position:-28px -45px;display:block;position:absolute;top:5px;right:5px}
-.albums .showcase{background:green;margin:15px 5px 15px 15px;width:700px;height:550px;}
-.albums .thumbnails{background:gray;width:100%;height:180px;overflow:hidden;margin:0;padding:0;list-style:none;}
-.albums .thumbnails ul{position:relative;width:10000px;margin:0;padding:0;height:167px;list-style-type:none;}
-.albums .thumbnails li{border:red 1px solid;width:150px; height:150px;display:block;float:left;margin-top:15px;margin-left:12px;}
+.albums .showcase{background:green;margin:15px 5px 15px 25px;width:950px;height:750px;display:table;}
+.albums .showcase .gallary{display:table-cell;*display:block;vertical-align:middle;text-align:center;}
+.albums .showcase img{}
+
+.albums .thumbnails{background:gray;width:100%;height:65px;overflow:hidden;margin:0;padding:0;list-style:none;}
+.albums .thumbnails .thumb_table{display:table; position:relative; height:65px; margin: 0 auto;}
+.albums .thumbnails .thumb_table .thumb_cell{display:table-cell;*display:block; vertical-align: middle; text-align:center;padding-left:8px;cursor: pointer;}
+.albums .thumbnails .thumb_table .thumb_cell img{vertical-align:middle;}
+.albums .thumbnails .thumb_table .thumb_cell img.focus{border:2px solid orange;}
+/*
+.albums .thumbnails ul{position:relative;width:10000px;margin:0;padding:0;height:167px;list-style-type:none; display:table}
+.albums .thumbnails ul li{
+	border:red 1px solid;width:150px; height:150px;
+	margin-top:15px;margin-left:12px; display:inline-block; vertical-align:middle;
+	text-align:center;
+}
+.albums .thumbnails li img{vertical-align:middle;}
+
+*/

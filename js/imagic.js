@@ -20,31 +20,44 @@
 		aclose.className = 'close';
 		var showcase = document.createElement("div");
 		showcase.className = "showcase";
-		var thumbnails = document.createElement("div")
+		var thumbnails = document.createElement("div");
 			thumbnails.className = "thumbnails";
-		var htm = '<ul>';
+			thumbnails.id = "__thumbnails";
+		var htm = '<div class="thumb_table">';//'<ul>';
 		for (var i=0; i<arr.length; i++) {
-			htm += '<li><img src="'+arr[i].uri+'" ';
+			htm += '<div class="thumb_cell"><img src="'+arr[i].uri+'" ';
 			if (arr[i].width >= arr[i].height) {
-				htm += 'width="150"';
+				htm += 'width="65"';
 			}else {
-				htm += 'height="150"';
+				htm += 'height="65"';
 			}
-			htm += ' /></li>'
+			htm += i == 0 ? 'class="focus"' : ''; 
+			htm += ' /></div>'
 		}
-		htm += '</ul>';
+		htm += '</div>';
+		//htm += '</ul>';
 		thumbnails.innerHTML = htm;
-		console.log(htm);
 		if (arr[0].width/arr[0].height >= 700/550) {
-			showcase.innerHTML = '<img src="'+arr[0].uri+'" width="700" />'; 
+			showcase.innerHTML = '<div class="gallary"><img src="'+arr[0].uri+'" width="700" id="__shower" /></div>'; 
 		}else {
-			showcase.innerHTML = '<img src="'+arr[0].uri+'" height="550" />'; 
+			showcase.innerHTML = '<div class="gallary"><img src="'+arr[0].uri+'" height="550" id="__shower" /></div>'; 
 		}
 		albums.className = 'albums';
 		albums.appendChild(aclose);
 		albums.appendChild(showcase);
 		albums.appendChild(thumbnails);
 		document.getElementsByTagName('body')[0].insertBefore(albums, document.getElementsByTagName('img')[0]);
+		var thumbdiv = document.getElementById('__thumbnails')
+		Util.addHandler(thumbdiv, 'click', function(e){
+			if(e.target.nodeName == 'IMG'){
+				var thumbimgs = thumbdiv.getElementsByTagName('img');
+				for (var i=0; i<thumbimgs.length; i++) {
+					thumbimgs[i].className = '';
+				}
+				e.target.className = 'focus';
+				document.getElementById('__shower').src = e.target.src;
+			};
+		})
 	}
 	function parseDom(arg) {
 		var objE = document.createElement("div");
@@ -70,7 +83,16 @@
 			};
 		}
 	}
+
+	function prevImg () {
+
+	}
+
+	function nextImg () {
+	}
+
 	function zoomIn () {
+
 	}
 	function cover_bg () {
 		var cover_dom = document.getElementById('__cover__bg');
